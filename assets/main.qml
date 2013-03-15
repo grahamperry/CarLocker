@@ -218,25 +218,20 @@ TabbedPane {
                         text: vehicle.vehicleVIN
                     }
                 }                                
-
-                ImageView {
-                    id: imgTab2
-                    imageSource: "asset:///images/picture1.png"
+                Container {
+                    layout: StackLayout {}
+                    horizontalAlignment: HorizontalAlignment.Fill
                     verticalAlignment: VerticalAlignment.Center
-                    horizontalAlignment: HorizontalAlignment.Center
-                    layoutProperties: StackLayoutProperties {
-                        spaceQuota: 1.0
-                    }
-                    scalingMethod: ScalingMethod.AspectFit
-                    opacity: 0.2
-                    animations: [
-                        // define animations for image here
-                        ParallelAnimation {
-                            id: raiseAnimation
-                            FadeTransition {fromOpacity: 0.2; toOpacity: 1; duration: 1000}
-                            ScaleTransition {fromX: 1; fromY: 1; toX: 1.5; toY: 1.5; duration: 1000; easingCurve: StockCurve.DoubleElasticOut}
+                    preferredWidth: 600
+                    Button {
+                        id: vehiclePhoto
+                        text:""
+                        imageSource: "asset:///images/picture1.png"
+                        onClicked: {
+                            console.log("Go to Photo Page");
+                            vehicleCamera.open();
                         }
-                    ]
+                    }
                 }
             }
         }
@@ -293,11 +288,13 @@ TabbedPane {
         },
         NewVehicle {
             id: createVehicle
+        },
+        VehicleCamera {
+            id: vehicleCamera
         }
     ]
     function saveDriverInfoToFile () {
-        driver.saveDriverInfoToFile ()
-        
+        driver.saveDriverInfoToFile ()   
     }
     
 }

@@ -88,10 +88,34 @@
     </message>
 </context>
 <context>
+    <name>VehicleCamera</name>
+    <message>
+        <location filename="../assets/VehicleCamera.qml" line="7"/>
+        <source>Vehicle Photo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/VehicleCamera.qml" line="21"/>
+        <source>Insert Photo Window Here</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>main</name>
     <message>
         <location filename="../assets/main.qml" line="6"/>
         <source>Driver</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="10"/>
+        <source>Driver Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="15"/>
+        <location filename="../assets/main.qml" line="153"/>
+        <source>Create</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -110,28 +134,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="245"/>
-        <location filename="../assets/main.qml" line="249"/>
-        <source>Incident</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/main.qml" line="269"/>
-        <source>Create an Incident Report</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/main.qml" line="10"/>
-        <source>Driver Information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/main.qml" line="15"/>
-        <location filename="../assets/main.qml" line="153"/>
-        <source>Create</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../assets/main.qml" line="143"/>
         <source>Vehicle</source>
         <translation type="unfinished"></translation>
@@ -142,8 +144,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="255"/>
+        <location filename="../assets/main.qml" line="240"/>
+        <location filename="../assets/main.qml" line="244"/>
+        <source>Incident</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="250"/>
         <source>Incident Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="264"/>
+        <source>Create an Incident Report</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

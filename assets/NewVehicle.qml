@@ -105,7 +105,11 @@ Sheet {
     }
     
     function clearVehicleInfo () {
-        makeField.text = ""
+        makeField.text   = ""
+        modelField.text  = "" 
+        colourField.text = "" 
+        yearField.text   = ""
+        vinField.text    = ""
     }
 
 } // End Sheet
