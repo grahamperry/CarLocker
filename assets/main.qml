@@ -20,7 +20,8 @@ TabbedPane {
                 ActionItem {
                     title: qsTr("Edit")
                     onTriggered: {
-                        console.log("Car Tab Selected");
+                        console.log("poulateAndOpen");
+                        createDriver.populateAndOpen();
                     }
                 },
                 ActionItem {

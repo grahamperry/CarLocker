@@ -160,6 +160,10 @@ Sheet {
         telephone.text = ""
         email.text     = "" 
     }
-
+    
+    function populateAndOpen(name) {
+        driver.open()
+        name.text = "Graham"
+    }
 } // End Sheet
 

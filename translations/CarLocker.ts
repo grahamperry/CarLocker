@@ -114,7 +114,7 @@
     </message>
     <message>
         <location filename="../assets/main.qml" line="15"/>
-        <location filename="../assets/main.qml" line="153"/>
+        <location filename="../assets/main.qml" line="154"/>
         <source>Create</source>
         <translation type="unfinished"></translation>
     </message>
@@ -124,38 +124,38 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="27"/>
+        <location filename="../assets/main.qml" line="28"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="34"/>
+        <location filename="../assets/main.qml" line="35"/>
         <source>Share</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="143"/>
+        <location filename="../assets/main.qml" line="144"/>
         <source>Vehicle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="147"/>
+        <location filename="../assets/main.qml" line="148"/>
         <source>Vehicle Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="240"/>
-        <location filename="../assets/main.qml" line="244"/>
+        <location filename="../assets/main.qml" line="241"/>
+        <location filename="../assets/main.qml" line="245"/>
         <source>Incident</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="250"/>
+        <location filename="../assets/main.qml" line="251"/>
         <source>Incident Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="264"/>
+        <location filename="../assets/main.qml" line="265"/>
         <source>Create an Incident Report</source>
         <translation type="unfinished"></translation>
     </message>
