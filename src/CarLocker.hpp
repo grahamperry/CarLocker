@@ -4,7 +4,17 @@
 
 #include <QObject>
 
-namespace bb { namespace cascades { class Application; }}
+#include <bps/soundplayer.h>
+#include <QtCore/QObject>
+#include <QtCore/QMetaType>
+
+namespace bb {
+
+    namespace cascades {
+        class Application;
+        class Invocation;
+    }
+}
 
 /*!
  * @brief Application pane object
@@ -17,6 +27,7 @@ class CarLocker : public QObject
 public:
     CarLocker(bb::cascades::Application *app);
     virtual ~CarLocker() {}
+
 };
 
 #endif /* CarLocker_HPP_ */

@@ -20,6 +20,10 @@ public:
 	Vehicle();
 	virtual ~Vehicle();
 
+	void loadVehicleFromConfig();
+    Q_INVOKABLE void saveVehicleInfoToFile();
+    Q_INVOKABLE bool vehicleEdit();
+
 	Q_PROPERTY(QString vehicleMake   READ getVehicleMake   WRITE setVehicleMake   NOTIFY vehicleChanged)
 	Q_PROPERTY(QString vehicleModel  READ getVehicleModel  WRITE setVehicleModel  NOTIFY vehicleChanged)
 	Q_PROPERTY(QString vehicleColour READ getVehicleColour WRITE setVehicleColour NOTIFY vehicleChanged)
@@ -40,11 +44,16 @@ public:
 
 	Q_INVOKABLE void saveVehicleInfo (QString make, QString model, QString colour, QString year, QString vin);
 
+	Q_INVOKABLE void setEditMode(bool edit) { m_editMode = edit;};
+	Q_INVOKABLE	void playShutter ();
+	Q_INVOKABLE void showPhotoInCard(const QString filename);
 
 signals:
 	void vehicleChanged();
 
 private:
+    bool m_editMode;
+
 	QString m_make;
 	QString m_model;
 	QString m_colour;

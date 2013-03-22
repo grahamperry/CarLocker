@@ -3,12 +3,17 @@
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
+#include <bb/cascades/multimedia/Camera>
+
 #include <QDebug>
 
 #include "Driver.h"
 #include "Vehicle.hpp"
 
+
 using namespace bb::cascades;
+using namespace bb::cascades::multimedia;
+
 using namespace vehicle;
 
 //===================================
@@ -43,6 +48,8 @@ CarLocker::CarLocker(bb::cascades::Application *app)
 		return;
 	}
 
+	qmlRegisterType < Camera > ("bb.cascades.multimedia", 1, 0, "Camera");
+
     Driver *driver = new Driver();
     qml->setContextProperty("driver", driver);
 
@@ -51,8 +58,16 @@ CarLocker::CarLocker(bb::cascades::Application *app)
 
     // create root object for the UI
     AbstractPane *root = qml->createRootObject<AbstractPane>();
+
+//    Camera *camera = root->findChild<Camera*>("camera1");
+//    QObject::connect(camera, SIGNAL(shutterFired()), this, SLOT(onShutterFired()));
+
     // set created root object as a scene
     app->setScene(root);
 
 
 }
+
+
+
+

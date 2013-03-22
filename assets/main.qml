@@ -9,19 +9,19 @@ TabbedPane {
             titleBar: TitleBar {
                 title: qsTr("Driver Information");
             }
+            signal populateDriver();
             actions: [
                 // define the actions for first tab here
                 ActionItem {
                     title: qsTr("Create")
                     onTriggered: {
-                        createDriver.open();
+                        createDriver.open("");
                     }
                 },
                 ActionItem {
                     title: qsTr("Edit")
-                    onTriggered: {
-                        console.log("poulateAndOpen");
-                        createDriver.populateAndOpen();
+                    onTriggered: {     
+                        driverEdit() 
                     }
                 },
                 ActionItem {
@@ -149,11 +149,23 @@ TabbedPane {
             }
             
             actions: [
-            // define the actions for tab here
+                // define the actions for tab here
                 ActionItem {
                     title: qsTr("Create")
                     onTriggered: {
                         createVehicle.open();
+                    }
+                },
+                ActionItem {
+                    title: qsTr("Edit")
+                    onTriggered: {     
+                        vehicleEdit() 
+                    }
+                },                
+                ActionItem {
+                    title: qsTr("Save");
+                    onTriggered: {
+                        saveVehicleInfoToFile();
                     }
                 }
             ]
@@ -239,37 +251,84 @@ TabbedPane {
     }
     Tab {
         title: qsTr("Incident")
+        
         Page {
             id: tab3
             titleBar: TitleBar {
-                title: qsTr("Incident");
+                title: qsTr("Incident Information");
+                visibility: ChromeVisibility.Visible
             }
             
             Container {
-                // define tab content here
-                Label {
-                    text: qsTr("Incident Information")
-                    horizontalAlignment: HorizontalAlignment.Center
-                    textStyle {
-                        base: SystemDefaults.TextStyles.TitleText
+                horizontalAlignment: HorizontalAlignment.Fill
+                verticalAlignment: VerticalAlignment.Fill
+                background: Color.Blue;
+                layout: StackLayout { }
+                leftPadding: 20
+                rightPadding: 20
+                topPadding: 20
+                bottomPadding: 20
+                preferredWidth: 800
+                preferredHeight: 1000
+                Container {
+                    layout: StackLayout { orientation: LayoutOrientation.LeftToRight }
+                    horizontalAlignment: HorizontalAlignment.Fill
+                    verticalAlignment: VerticalAlignment.Fill
+                    topPadding: 20
+                    bottomPadding: 20
+                    
+                    Button {
+                        id: incidentRecord
+                        horizontalAlignment: HorizontalAlignment.Fill
+                        verticalAlignment: VerticalAlignment.Fill
+
+                        text: "Record "
+                        onClicked: {
+                            console.log("Record an Incident");
+                        }
+                    }
+                    Button {
+                        id: incidentShare
+                        horizontalAlignment: HorizontalAlignment.Fill
+                        verticalAlignment: VerticalAlignment.Fill
+
+                        text: "Share"
+                        onClicked: {
+                            console.log("Share an Incident");                                
+                        }
+
                     }
                 }
                 Container {
-                    layout: DockLayout { }
-                    layoutProperties: StackLayoutProperties {
-                        spaceQuota: 1.0
-                    }
-                    verticalAlignment: VerticalAlignment.Fill
+                    layout: StackLayout { orientation: LayoutOrientation.LeftToRight }
                     horizontalAlignment: HorizontalAlignment.Fill
-                    Label {
-                        text: qsTr ("Create an Incident Report")
-                        verticalAlignment: VerticalAlignment.Center
-                        horizontalAlignment: HorizontalAlignment.Center
-                        textStyle {
-                            base: SystemDefaults.TextStyles.BodyText
+                    verticalAlignment: VerticalAlignment.Fill
+                    topPadding: 20
+                    bottomPadding: 20
+
+                    Button {
+                        id: incidentVideo
+                        horizontalAlignment: HorizontalAlignment.Fill
+                        verticalAlignment: VerticalAlignment.Fill
+                        preferredWidth: 300
+                        preferredHeight: 600
+                        text: "Video"
+                        onClicked: {
+                            console.log("Video an Incident");
                         }
                     }
-                }
+                    Button {
+                        id: emergencyServices
+                        horizontalAlignment: HorizontalAlignment.Fill
+                        verticalAlignment: VerticalAlignment.Fill
+                        preferredWidth: 300
+                        preferredHeight: 600
+                        text: "Emergency"
+                        onClicked: {
+                            console.log("Call Emergency Services");
+                        }
+                    }
+                }  
             }
         }
     }
@@ -278,9 +337,6 @@ TabbedPane {
         // this slot is called when declarative scene is created
         // write post creation initialization here
         console.log("TabbedPane - onCreationCompleted()")
-        //driverLabel.visible = !driver.doesExist;
-        // enable layout to adapt to the device rotation
-        // don't forget to enable screen rotation in bar-bescriptor.xml (Application->Orientation->Auto-orient)
         OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
     }
     attachedObjects:[
@@ -294,8 +350,19 @@ TabbedPane {
             id: vehicleCamera
         }
     ]
-    function saveDriverInfoToFile () {
+    function saveDriverInfoToFile() {
         driver.saveDriverInfoToFile ()   
+    }
+    function saveVehicleInfoToFile() {
+        vehicle.saveVehicleInfoToFile()   
+    }
+    function driverEdit() {
+        driver.setEditMode(true);
+        createDriver.open();
+    }
+    function vehicleEdit() {
+        vehicle.setEditMode(true);
+        createVehicle.open();
     }
     
 }

@@ -88,19 +88,6 @@
     </message>
 </context>
 <context>
-    <name>VehicleCamera</name>
-    <message>
-        <location filename="../assets/VehicleCamera.qml" line="7"/>
-        <source>Vehicle Photo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/VehicleCamera.qml" line="21"/>
-        <source>Insert Photo Window Here</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>main</name>
     <message>
         <location filename="../assets/main.qml" line="6"/>
@@ -113,18 +100,20 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="15"/>
+        <location filename="../assets/main.qml" line="16"/>
         <location filename="../assets/main.qml" line="154"/>
         <source>Create</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="21"/>
+        <location filename="../assets/main.qml" line="22"/>
+        <location filename="../assets/main.qml" line="160"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="28"/>
+        <location filename="../assets/main.qml" line="166"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
@@ -144,19 +133,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="241"/>
-        <location filename="../assets/main.qml" line="245"/>
+        <location filename="../assets/main.qml" line="253"/>
         <source>Incident</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="251"/>
+        <location filename="../assets/main.qml" line="258"/>
         <source>Incident Information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/main.qml" line="265"/>
-        <source>Create an Incident Report</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

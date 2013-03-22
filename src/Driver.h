@@ -20,6 +20,11 @@ public:
 	Driver();
 	virtual ~Driver();
 
+	void loadDriverFromConfig();
+    Q_INVOKABLE void saveDriverInfoToFile();
+    Q_INVOKABLE bool driverEdit();
+
+
 	Q_PROPERTY(QString driverName      READ getDriverName      WRITE setDriverName      NOTIFY driverChanged)
 	Q_PROPERTY(QString driverAddress   READ getDriverAddress   WRITE setDriverAddress   NOTIFY driverChanged)
 	Q_PROPERTY(QString driverAddress2  READ getDriverAddress2  WRITE setDriverAddress2  NOTIFY driverChanged)
@@ -32,7 +37,6 @@ public:
 	Q_INVOKABLE void saveDriverInfo (QString name, QString address1, QString address2, QString city,
 			                         QString state, QString postcode, QString country,
 			                         QString tel, QString email );
-	Q_INVOKABLE void saveDriverInfoToFile();
 
 	Q_INVOKABLE QString getDriverName      () { return m_name; };
 	Q_INVOKABLE QString getDriverAddress   () { return m_address; };
@@ -43,6 +47,8 @@ public:
 	Q_INVOKABLE QString getDriverTelephone () { return m_telephone; };
 	Q_INVOKABLE QString getDriverEmail     () { return m_email; };
 	Q_INVOKABLE QString getDriverPostcode  () { return m_postcode; };
+
+	Q_INVOKABLE void setEditMode(bool edit) { m_editMode = edit;};
 
 	void setDriverName      (QString newName)      { m_name = newName; };
 	void setDriverAddress   (QString newAddress)   { m_address = newAddress; };
@@ -57,8 +63,10 @@ public:
 
 signals:
 	void driverChanged();
+	void driverPopulate();
 
 private:
+	bool m_editMode;
 	QString m_name;
 	QString m_address;
 	QString m_address2;

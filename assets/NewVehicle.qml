@@ -99,6 +99,16 @@ Sheet {
             }
         ]
     }  
+    
+    onOpened: {
+        if (vehicle.vehicleEdit()) {
+            makeField.text   = vehicle.getVehicleMake
+            modelField.text  = vehicle.getVehicleModel
+            colourField.text = vehicle.getVehicleColour
+            yearField.text   = vehicle.getVehicleYear
+            vinField.text    = vehicle.getVehicleVIN
+        }
+    }
 
     function saveVehicleInfo () {
         vehicle.saveVehicleInfo(makeField.text, modelField.text, colourField.text, yearField.text, vinField.text )
@@ -111,6 +121,9 @@ Sheet {
         yearField.text   = ""
         vinField.text    = ""
     }
-
+    function populate (name) {
+        console.log("NewDriver.populate");
+        nameField.text = name;
+    }
 } // End Sheet
 

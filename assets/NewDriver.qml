@@ -6,13 +6,13 @@ Sheet {
         titleBar: TitleBar {
             title: qsTr("Create New Driver");
         }
-        
+
         Container {
             layout: DockLayout {}
             ScrollView {
                 Container {
                     layout: StackLayout {}
-
+                    
                     horizontalAlignment: HorizontalAlignment.Center
                     verticalAlignment: VerticalAlignment.Center
                     Container {
@@ -53,7 +53,7 @@ Sheet {
                         }
                         TextField {
                             id: city
-                            }
+                        }
                     }
                     Container {
                         layout: StackLayout { orientation: LayoutOrientation.LeftToRight }
@@ -111,11 +111,11 @@ Sheet {
                 }
             }
         }
+                     
         actions: [
             ActionItem {
                 title: "Create"
                 onTriggered: {
-                    console.log("Create");
                     newDriver.saveDriverInfo();
                     newDriver.clearDriverInfo();
                     newDriver.close();
@@ -125,7 +125,6 @@ Sheet {
             ActionItem {
                 title: "Quit"
                 onTriggered: {
-                    console.log("Quit");
                     newDriver.clearDriverInfo();
                     newDriver.close();
                 }
@@ -134,19 +133,34 @@ Sheet {
             ActionItem {
                 title: "Clear"
                 onTriggered: {
-                    console.log("Clear");
                     newDriver.clearDriverInfo();                    
                 }
                 ActionBar.placement: ActionBarPlacement.OnBar                
             }
         ]
     }  
+    
+    // 
+    onOpened: {
+        if (driver.driverEdit()) {
+            name.text      = driver.getDriverName 
+            address.text   = driver.getDriverAddress
+            address2.text  = driver.getDriverAddress2
+            city.text      = driver.getDriverCity
+            state.text     = driver.getDriverState
+            postcode.text  = driver.getDriverPostcode
+            country.text   = driver.getDriverCountry
+            telephone.text = driver.getDriverTelephone
+            email.text     = driver.getDriverEmail
+        }
+    }
 
     function saveDriverInfo () {
         driver.saveDriverInfo(name.text, 
-                              address.text, address2.text, 
-                              city.text, state.text, postcode.text, country.text,
-                              telephone.text, email.text)
+                      address.text, address2.text, 
+                      city.text, state.text, country.text, postcode.text, 
+                      telephone.text, email.text)
+        driver.setEditMode(false);
     }
     
     function clearDriverInfo () {
@@ -161,9 +175,5 @@ Sheet {
         email.text     = "" 
     }
     
-    function populateAndOpen(name) {
-        driver.open()
-        name.text = "Graham"
-    }
 } // End Sheet
 
