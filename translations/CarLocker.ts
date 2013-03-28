@@ -95,50 +95,50 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="10"/>
+        <location filename="../assets/main.qml" line="11"/>
         <source>Driver Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="16"/>
-        <location filename="../assets/main.qml" line="152"/>
+        <location filename="../assets/main.qml" line="17"/>
+        <location filename="../assets/main.qml" line="157"/>
         <source>Create</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="22"/>
-        <location filename="../assets/main.qml" line="158"/>
+        <location filename="../assets/main.qml" line="23"/>
+        <location filename="../assets/main.qml" line="163"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="28"/>
-        <location filename="../assets/main.qml" line="164"/>
+        <location filename="../assets/main.qml" line="29"/>
+        <location filename="../assets/main.qml" line="169"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="34"/>
+        <location filename="../assets/main.qml" line="35"/>
         <source>Share</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="142"/>
+        <location filename="../assets/main.qml" line="145"/>
         <source>Vehicle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="146"/>
+        <location filename="../assets/main.qml" line="151"/>
         <source>Vehicle Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="266"/>
+        <location filename="../assets/main.qml" line="271"/>
         <source>Incident</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="271"/>
+        <location filename="../assets/main.qml" line="277"/>
         <source>Incident Information</source>
         <translation type="unfinished"></translation>
     </message>

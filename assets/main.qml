@@ -4,6 +4,7 @@ TabbedPane {
     showTabsOnActionBar: true
     Tab {
         title: qsTr("Driver")
+        imageSource: "images/Driver.png"
         Page {
             id: driverTab
             titleBar: TitleBar {
@@ -32,6 +33,8 @@ TabbedPane {
                 },
                 ActionItem {
                     title: qsTr("Share");
+                    imageSource: "images/Share.png"
+                    
                     onTriggered: {
                         console.log("Share: Email Driver Info");
                     }
@@ -140,6 +143,8 @@ TabbedPane {
     }
     Tab {
         title: qsTr("Vehicle")
+        imageSource: "images/Car.png"
+        
         Page {
             id: vehicleTab
             titleBar: TitleBar {
@@ -264,6 +269,7 @@ TabbedPane {
     }
     Tab {
         title: qsTr("Incident")
+        imageSource: "images/Driver.png"
         
         Page {
             id: tab3
@@ -273,15 +279,15 @@ TabbedPane {
             }
             
             Container {
-                horizontalAlignment: HorizontalAlignment.Fill
-                verticalAlignment: VerticalAlignment.Fill
+                horizontalAlignment: HorizontalAlignment.Center
+                verticalAlignment: VerticalAlignment.Center
                 background: Color.Blue;
                 layout: StackLayout { }
                 leftPadding: 20
                 rightPadding: 20
                 topPadding: 20
                 bottomPadding: 20
-                preferredWidth: 800
+                preferredWidth: 1000
                 preferredHeight: 1000
                 Container {
                     layout: StackLayout { orientation: LayoutOrientation.LeftToRight }
@@ -289,13 +295,16 @@ TabbedPane {
                     verticalAlignment: VerticalAlignment.Fill
                     topPadding: 20
                     bottomPadding: 20
+                    minHeight: 500
+                    background: Color.Red;
                     
                     Button {
                         id: incidentRecord
                         horizontalAlignment: HorizontalAlignment.Fill
                         verticalAlignment: VerticalAlignment.Fill
-
-                        text: "Record "
+                        preferredWidth: 500
+                        minHeight: 100
+                        text: "Log"
                         onClicked: {
                             console.log("Record an Incident");
                         }
@@ -304,27 +313,30 @@ TabbedPane {
                         id: incidentShare
                         horizontalAlignment: HorizontalAlignment.Fill
                         verticalAlignment: VerticalAlignment.Fill
+                        preferredWidth: 500
+                        minHeight: 100
 
                         text: "Share"
                         onClicked: {
                             console.log("Share an Incident");                                
                         }
-
                     }
                 }
                 Container {
                     layout: StackLayout { orientation: LayoutOrientation.LeftToRight }
                     horizontalAlignment: HorizontalAlignment.Fill
                     verticalAlignment: VerticalAlignment.Fill
-                    topPadding: 20
+                    topPadding: 200
                     bottomPadding: 20
+                    background: Color.Green;
+                    minHeight: 500
 
                     Button {
                         id: incidentVideo
                         horizontalAlignment: HorizontalAlignment.Fill
                         verticalAlignment: VerticalAlignment.Fill
-                        preferredWidth: 300
-                        preferredHeight: 600
+                        preferredWidth: 500
+                        preferredHeight: 500
                         text: "Video"
                         onClicked: {
                             console.log("Video an Incident");
@@ -334,8 +346,8 @@ TabbedPane {
                         id: emergencyServices
                         horizontalAlignment: HorizontalAlignment.Fill
                         verticalAlignment: VerticalAlignment.Fill
-                        preferredWidth: 300
-                        preferredHeight: 600
+                        preferredWidth: 500
+                        preferredHeight: 500
                         text: "Emergency"
                         onClicked: {
                             console.log("Call Emergency Services");
