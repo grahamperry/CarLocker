@@ -17,16 +17,19 @@
 using namespace bb::data;
 using namespace bb::cascades;
 using namespace bb::cascades::multimedia;
+using namespace bb::system;
 
 namespace vehicle {
 
 Vehicle::Vehicle() {
+    qDebug() << "Vehicle Constructor";
     m_editMode  = false;
     m_make   = "";
     m_model  = "";
     m_colour = "";
     m_year   = "";
     m_vin    = "";
+    vehiclePhoto = "asset:///images/picture1.png";
     loadVehicleFromConfig();
 }
 
@@ -103,7 +106,6 @@ Q_INVOKABLE void Vehicle::saveVehicleInfoToFile ()
     // Retrieve the working dir and create an xml file
     QDir home = QDir::home();
     home.cd("data");
-    qDebug() << home;
     QFile file(home.absoluteFilePath("vehicles.xml"));
     if (file.open(QIODevice::ReadWrite | QIODevice::Text)) {
         XmlDataAccess xda;
@@ -129,28 +131,73 @@ void Vehicle::playShutter () {
     soundplayer_play_sound("event_camera_shutter");
 }
 
-void Vehicle::showPhotoInCard(const QString fileName) {
-    // Create InvokeManager and InvokeRequest objects to be able to invoke a card with
-    // a viewer that will show the car photo.
+/**
+ * Take a string from the camera qml, convert it to a QUrl and save it
+ */
+void Vehicle::setVehiclePhoto(const QString fileName) {
+    qDebug() << "setVehiclePhoto : " << fileName;
+    QImageReader reader;
+
+    if (!fileName.isEmpty()) {
+        // Convert to QImage
+        qDebug() << "Convert to QImage";
+        reader.setFileName(fileName);
+        QImage image = reader.read();
+        QSize imageSize = image.size();
+
+        // Scale to 900 x 900
+        qDebug() << "Convert to 900 x 900";
+        QSize thumbSize(900,900);
+        QImage scaled(image.scaled(thumbSize, Qt::KeepAspectRatio));
+        qDebug() << "Scaled Size = " << scaled.size();
+
+        QDir home = QDir::home();
+        home.cd("data");
+        QFile file(home.absoluteFilePath("vehicle.jpg"));
+        QString saveFile = file.fileName();
+        qDebug() << "open vehicle.jpg : " << saveFile;
+        if (file.open(QIODevice::ReadWrite | QIODevice::Text)) {
+            qDebug() << "save to vehicle.jpg";
+            scaled.save(saveFile, "JPG");
+        }
+        qDebug() << "close vehicle.jpg";
+        file.close();
+
+        qDebug() << "save filename";
+        vehiclePhoto = saveFile;
+        emit photoChanged();
+
+        // Delete from photo
+    }
+
+
+}
+
+/**
+ * Get Vehicle Photo URL
+ */
+Q_INVOKABLE
+QString Vehicle::getVehiclePhoto() {
+    qDebug() << "getVehiclePhoto";
+    return vehiclePhoto;
+}
+
+Q_INVOKABLE
+void Vehicle::showPreview(const QString fileName) {
     bb::system::InvokeManager manager;
     bb::system::InvokeRequest request;
 
-    // Setup what to show and in what target
     request.setUri(QUrl::fromLocalFile(fileName));
     request.setTarget("sys.pictures.card.previewer");
     request.setAction("bb.action.VIEW");
-    bb::system::InvokeTargetReply *targetReply = manager.invoke(request);
-
-    // Setting the parent to this will make the manager live on after the function terminates
+    InvokeTargetReply *targetReply = manager.invoke(request);
     manager.setParent(this);
 
     if (targetReply == NULL) {
         qDebug() << "InvokeTargetReply is NULL: targetReply = " << targetReply;
-    }
-    else {
+    } else {
         targetReply->setParent(this);
     }
-
 }
 
 } /* namespace vehicle */

@@ -101,44 +101,44 @@
     </message>
     <message>
         <location filename="../assets/main.qml" line="16"/>
-        <location filename="../assets/main.qml" line="154"/>
+        <location filename="../assets/main.qml" line="152"/>
         <source>Create</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="22"/>
-        <location filename="../assets/main.qml" line="160"/>
+        <location filename="../assets/main.qml" line="158"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/main.qml" line="28"/>
-        <location filename="../assets/main.qml" line="166"/>
+        <location filename="../assets/main.qml" line="164"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="35"/>
+        <location filename="../assets/main.qml" line="34"/>
         <source>Share</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="144"/>
+        <location filename="../assets/main.qml" line="142"/>
         <source>Vehicle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="148"/>
+        <location filename="../assets/main.qml" line="146"/>
         <source>Vehicle Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="253"/>
+        <location filename="../assets/main.qml" line="266"/>
         <source>Incident</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="258"/>
+        <location filename="../assets/main.qml" line="271"/>
         <source>Incident Information</source>
         <translation type="unfinished"></translation>
     </message>

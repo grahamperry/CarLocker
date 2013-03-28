@@ -59,9 +59,6 @@ CarLocker::CarLocker(bb::cascades::Application *app)
     // create root object for the UI
     AbstractPane *root = qml->createRootObject<AbstractPane>();
 
-//    Camera *camera = root->findChild<Camera*>("camera1");
-//    QObject::connect(camera, SIGNAL(shutterFired()), this, SLOT(onShutterFired()));
-
     // set created root object as a scene
     app->setScene(root);
 

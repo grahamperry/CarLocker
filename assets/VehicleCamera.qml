@@ -3,6 +3,8 @@ import bb.cascades.multimedia 1.0
 
 Sheet {
     id: vehicleCamera
+    property string tempPhotoName
+
     Page {
         content: Container {
             layout: DockLayout {}
@@ -16,13 +18,11 @@ Sheet {
                 horizontalAlignment: HorizontalAlignment.Fill
                 verticalAlignment: VerticalAlignment.Fill
                 property bool photoBeingTaken
-        
                 layoutProperties : AbsoluteLayoutProperties {
                     id: vfLayout
                     positionX: 0
                     positionY: 0
                 }
-                
                 onTouch: {
                     if (photoBeingTaken == false) {
                         console.log("Camera: onTouch");
@@ -45,8 +45,9 @@ Sheet {
                 onPhotoSaved: {
                     console.log("Photo has been successfully Saved : " + fileName);
                     photoBeingTaken = false;
-                    setting.lastFileName = fileName;
-                    setting.visible = true;
+                    tempPhotoName = fileName;
+                    preview.lastFileName = fileName;
+                    preview.visible = true;
                 }
                 onPhotoSaveFailed: {
                     console.log("Photo could not be saved: Error " + error);
@@ -56,25 +57,24 @@ Sheet {
                     vehicle.playShutter()
                 }
             }
+            // Preview Window
             Container {
                 horizontalAlignment: HorizontalAlignment.Fill
-                verticalAlignment: VerticalAlignment.Bottom
+                verticalAlignment: VerticalAlignment. Bottom
                 layout: DockLayout {}
                 ImageButton {
-                    id: setting
-                    property string lastFileName
-                    visible: false
+                    id: preview
+                    property string lastFileName: ""
+                    visible: false 
                     defaultImageSource: "asset:///images/settings_unpressed.png"
                     pressedImageSource: "asset:///images/settings_pressed.png"
-                    horizontalAlignment: HorizontalAlignment.Right
-                    verticalAlignment: VerticalAlignment.Bottom
-                    
+                    horizontalAlignment: HorizontalAlignment
                     onClicked: {
-                        console.log("ShowPhotoInCard");
-                        vehicle.showPhotoInCard(lastFileName);
+                        vehicle.showPreview(lastFileName);
                     }
                 }
             }
+            
         }
 
         actions: [
@@ -82,6 +82,7 @@ Sheet {
                 title: "Accept"
                 onTriggered: {
                     console.log("Accept");
+                    vehicle.setVehiclePhoto(tempPhotoName);
                     vehicleCamera.close();
                 }
                 ActionBar.placement: ActionBarPlacement.OnBar
@@ -90,9 +91,20 @@ Sheet {
                 title: "Retake"
                 onTriggered: {
                     console.log("Retake");
+                    tempPhotoName = ""
+                }
+                ActionBar.placement: ActionBarPlacement.OnBar
+            },
+            ActionItem {
+                title: "Quit"
+                onTriggered: {
+                    console.log("Quit");
+                    tempPhotoName = ""
+                    vehicleCamera.close();
                 }
                 ActionBar.placement: ActionBarPlacement.OnBar
             }
+            
         ]
     }  
 

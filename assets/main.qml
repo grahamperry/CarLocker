@@ -28,15 +28,13 @@ TabbedPane {
                     title: qsTr("Save");
                     onTriggered: {
                         saveDriverInfoToFile();
-                    }
-                    
+                    }  
                 },
                 ActionItem {
                     title: qsTr("Share");
                     onTriggered: {
                         console.log("Share: Email Driver Info");
                     }
-                    
                 }
                 
             ]
@@ -171,6 +169,7 @@ TabbedPane {
             ]
             Container {
                 // define tab content here
+                id: vehicleContent
                 Container {
                     layout: StackLayout { orientation: LayoutOrientation.LeftToRight }
                     Label {
@@ -232,17 +231,31 @@ TabbedPane {
                     }
                 }                                
                 Container {
-                    layout: StackLayout {}
-                    horizontalAlignment: HorizontalAlignment.Fill
-                    verticalAlignment: VerticalAlignment.Center
-                    preferredWidth: 600
-                    Button {
-                        id: vehiclePhoto
-                        text:""
-                        imageSource: "asset:///images/picture1.png"
-                        onClicked: {
-                            console.log("Go to Photo Page");
-                            vehicleCamera.open();
+                    layout: DockLayout {}
+                    horizontalAlignment: HorizontalAlignment.Center
+                    verticalAlignment: VerticalAlignment.Bottom
+                    //background: Color.Blue;
+                    
+                    preferredWidth: 1000
+                    preferredHeight: 1000
+                    Container {
+                        ImageView {
+                            id: vehiclePhoto
+                            horizontalAlignment: HorizontalAlignment.Center
+                            verticalAlignment: VerticalAlignment.Top 
+                            preferredWidth: 900
+                            preferredHeight: 900                   
+                            imageSource: vehicle.vehiclePhoto
+                        }
+                        Button {
+                            id: photo
+                            text: "Photo"
+                            horizontalAlignment: HorizontalAlignment.Center
+                            verticalAlignment: VerticalAlignment.Bottom
+                            onClicked: {
+                                console.log("Go to Photo Page");
+                                vehicleCamera.open();
+                            }
                         }
                     }
                 }
