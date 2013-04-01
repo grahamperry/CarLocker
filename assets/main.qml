@@ -15,18 +15,21 @@ TabbedPane {
                 // define the actions for first tab here
                 ActionItem {
                     title: qsTr("Create")
+                    imageSource: "images/Create.png"                    
                     onTriggered: {
                         createDriver.open("");
                     }
                 },
                 ActionItem {
                     title: qsTr("Edit")
+                    imageSource: "images/Open.png"
                     onTriggered: {     
                         driverEdit() 
                     }
                 },
                 ActionItem {
                     title: qsTr("Save");
+                    imageSource: "images/Save.png"
                     onTriggered: {
                         saveDriverInfoToFile();
                     }  
@@ -155,18 +158,21 @@ TabbedPane {
                 // define the actions for tab here
                 ActionItem {
                     title: qsTr("Create")
+                    imageSource: "images/Create.png"
                     onTriggered: {
                         createVehicle.open();
                     }
                 },
                 ActionItem {
                     title: qsTr("Edit")
+                    imageSource: "images/Open.png"
                     onTriggered: {     
                         vehicleEdit() 
                     }
                 },                
                 ActionItem {
                     title: qsTr("Save");
+                    imageSource: "images/Save.png"
                     onTriggered: {
                         saveVehicleInfoToFile();
                     }
@@ -239,29 +245,34 @@ TabbedPane {
                     layout: DockLayout {}
                     horizontalAlignment: HorizontalAlignment.Center
                     verticalAlignment: VerticalAlignment.Bottom
-                    //background: Color.Blue;
-                    
+                    topPadding: 40
+                                        
                     preferredWidth: 1000
                     preferredHeight: 1000
                     Container {
-                        ImageView {
+                        ImageButton {
                             id: vehiclePhoto
                             horizontalAlignment: HorizontalAlignment.Center
                             verticalAlignment: VerticalAlignment.Top 
                             preferredWidth: 900
                             preferredHeight: 900                   
-                            imageSource: vehicle.vehiclePhoto
-                        }
-                        Button {
-                            id: photo
-                            text: "Photo"
-                            horizontalAlignment: HorizontalAlignment.Center
-                            verticalAlignment: VerticalAlignment.Bottom
+                            defaultImageSource: vehicle.vehiclePhoto
                             onClicked: {
-                                console.log("Go to Photo Page");
                                 vehicleCamera.open();
                             }
                         }
+//                        Button {
+//                            id: photo
+//                            text: "Photo"
+//                            imageSource: "images/Camera.png"
+//                            
+//                            horizontalAlignment: HorizontalAlignment.Center
+//                            verticalAlignment: VerticalAlignment.Bottom
+//                            onClicked: {
+//                                console.log("Go to Photo Page");
+//                                vehicleCamera.open();
+//                            }
+//                        }
                     }
                 }
             }
@@ -282,7 +293,7 @@ TabbedPane {
                 horizontalAlignment: HorizontalAlignment.Center
                 verticalAlignment: VerticalAlignment.Center
                 background: Color.Blue;
-                layout: StackLayout { }
+                layout: DockLayout { }
                 leftPadding: 20
                 rightPadding: 20
                 topPadding: 20
@@ -305,6 +316,8 @@ TabbedPane {
                         preferredWidth: 500
                         minHeight: 100
                         text: "Log"
+                        imageSource: "images/Create.png"
+                        
                         onClicked: {
                             console.log("Record an Incident");
                         }
@@ -315,6 +328,7 @@ TabbedPane {
                         verticalAlignment: VerticalAlignment.Fill
                         preferredWidth: 500
                         minHeight: 100
+                        imageSource: "images/Share.png"
 
                         text: "Share"
                         onClicked: {
@@ -338,6 +352,8 @@ TabbedPane {
                         preferredWidth: 500
                         preferredHeight: 500
                         text: "Video"
+                        imageSource: "images/Video.png"
+
                         onClicked: {
                             console.log("Video an Incident");
                         }
@@ -349,6 +365,8 @@ TabbedPane {
                         preferredWidth: 500
                         preferredHeight: 500
                         text: "Emergency"
+                        imageSource: "images/Phone.png"
+                        
                         onClicked: {
                             console.log("Call Emergency Services");
                         }
