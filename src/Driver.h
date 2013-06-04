@@ -15,6 +15,14 @@
 
 class Driver : public QObject {
 	Q_OBJECT
+    Q_PROPERTY(QString driverName      READ getDriverName      WRITE setDriverName      NOTIFY driverChanged)
+    Q_PROPERTY(QString driverAddress   READ getDriverAddress   WRITE setDriverAddress   NOTIFY driverChanged)
+    Q_PROPERTY(QString driverAddress2  READ getDriverAddress2  WRITE setDriverAddress2  NOTIFY driverChanged)
+    Q_PROPERTY(QString driverCity      READ getDriverCity      WRITE setDriverCity      NOTIFY driverChanged)
+    Q_PROPERTY(QString driverState     READ getDriverState     WRITE setDriverState     NOTIFY driverChanged)
+    Q_PROPERTY(QString driverCountry   READ getDriverCountry   WRITE setDriverCountry   NOTIFY driverChanged)
+    Q_PROPERTY(QString driverTelephone READ getDriverTelephone WRITE setDriverTelephone NOTIFY driverChanged)
+    Q_PROPERTY(QString driverEmail     READ getDriverEmail     WRITE setDriverEmail     NOTIFY driverChanged)
 
 public:
 	Driver();
@@ -25,14 +33,6 @@ public:
     Q_INVOKABLE bool driverEdit();
 
 
-	Q_PROPERTY(QString driverName      READ getDriverName      WRITE setDriverName      NOTIFY driverChanged)
-	Q_PROPERTY(QString driverAddress   READ getDriverAddress   WRITE setDriverAddress   NOTIFY driverChanged)
-	Q_PROPERTY(QString driverAddress2  READ getDriverAddress2  WRITE setDriverAddress2  NOTIFY driverChanged)
-	Q_PROPERTY(QString driverCity      READ getDriverCity      WRITE setDriverCity      NOTIFY driverChanged)
-	Q_PROPERTY(QString driverState     READ getDriverState     WRITE setDriverState     NOTIFY driverChanged)
-	Q_PROPERTY(QString driverCountry   READ getDriverCountry   WRITE setDriverCountry   NOTIFY driverChanged)
-	Q_PROPERTY(QString driverTelephone READ getDriverTelephone WRITE setDriverTelephone NOTIFY driverChanged)
-	Q_PROPERTY(QString driverEmail     READ getDriverEmail     WRITE setDriverEmail     NOTIFY driverChanged)
 
 	Q_INVOKABLE void saveDriverInfo (QString name, QString address1, QString address2, QString city,
 			                         QString state, QString postcode, QString country,

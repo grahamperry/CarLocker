@@ -25,7 +25,13 @@ Q_DECL_EXPORT int main(int argc, char **argv)
     // create the application pane object to init UI etc.
     new CarLocker(&app);
 
+    QObject::connect(&app, SIGNAL(swipeDown()), &app, SLOT(onSwipeDown()));
+
     // we complete the transaction started in the app constructor and start the client event loop here
     return Application::exec();
     // when loop is exited the Application deletes the scene which deletes all its children (per qt rules for children)
+}
+
+void onSwipeDown() {
+    qDebug() << "onSwipedown";
 }

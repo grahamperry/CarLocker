@@ -9,7 +9,8 @@
 
 #include "Driver.h"
 #include "Vehicle.hpp"
-
+#include "Incident.hpp"
+#include "Settings.hpp"
 
 using namespace bb::cascades;
 using namespace bb::cascades::multimedia;
@@ -48,7 +49,7 @@ CarLocker::CarLocker(bb::cascades::Application *app)
 		return;
 	}
 
-	qmlRegisterType < Camera > ("bb.cascades.multimedia", 1, 0, "Camera");
+	qmlRegisterType<Camera>("bb.cascades.multimedia", 1, 0, "Camera");
 
     Driver *driver = new Driver();
     qml->setContextProperty("driver", driver);
@@ -56,12 +57,18 @@ CarLocker::CarLocker(bb::cascades::Application *app)
     Vehicle *vehicle = new Vehicle();
     qml->setContextProperty("vehicle", vehicle);
 
+    Incident *incident = new Incident();
+    qml->setContextProperty("incident", incident);
+
+    // Create the Datasource to handle App Settings and make it visible to QML
+    Settings *settings = new Settings();
+    qml->setContextProperty("settingsDatasource", settings);
+
     // create root object for the UI
     AbstractPane *root = qml->createRootObject<AbstractPane>();
 
     // set created root object as a scene
     app->setScene(root);
-
 
 }
 

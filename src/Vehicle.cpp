@@ -29,7 +29,7 @@ Vehicle::Vehicle() {
     m_colour = "";
     m_year   = "";
     m_vin    = "";
-    vehiclePhoto = "asset:///images/picture1.png";
+    m_vehiclePhoto = "asset:///images/picture1.png";
     loadVehicleFromConfig();
 }
 
@@ -39,7 +39,7 @@ Vehicle::~Vehicle() {
 /**
  * UI has got the Vehicle info from the user, save it in the object
  */
-Q_INVOKABLE void Vehicle::saveVehicleInfo (QString make, QString model, QString colour, QString year, QString vin)
+void Vehicle::saveVehicleInfo (QString make, QString model, QString colour, QString year, QString vin)
 {
 	setVehicleMake(make);
 	setVehicleModel(model);
@@ -64,11 +64,11 @@ void Vehicle::loadVehicleFromConfig() {
         if (vMyDriverList.canConvert(QVariant::Map)) {
 
             QVariantMap vFirstDriver = vMyDriverList.toMap();
-            m_make      = vFirstDriver["make"].toString();
-            m_model     = vFirstDriver["model"].toString();
-            m_colour    = vFirstDriver["colour"].toString();
-            m_year      = vFirstDriver["year"].toString();
-            m_vin       = vFirstDriver["vin"].toString();
+            m_make         = vFirstDriver["make"].toString();
+            m_model        = vFirstDriver["model"].toString();
+            m_colour       = vFirstDriver["colour"].toString();
+            m_year         = vFirstDriver["year"].toString();
+            m_vin          = vFirstDriver["vin"].toString();
         }
     }
     else {
@@ -80,10 +80,8 @@ void Vehicle::loadVehicleFromConfig() {
 /**
  * Save the current Driver info to the file driver.xml
  */
-Q_INVOKABLE void Vehicle::saveVehicleInfoToFile ()
+void Vehicle::saveVehicleInfoToFile ()
 {
-    qDebug() << "saveVehicleInfoToFile";
-
     // Create QVariantMap objects to contain the data for each driver
     QVariantMap firstVehicle;
 
@@ -118,7 +116,6 @@ Q_INVOKABLE void Vehicle::saveVehicleInfoToFile ()
 /**
  * Are we in Edit or Compose Mode for the Vehicle data
  */
-Q_INVOKABLE
 bool Vehicle::vehicleEdit() {
     return m_editMode;
 }
@@ -126,7 +123,6 @@ bool Vehicle::vehicleEdit() {
 /**
  * play shutter noise when camera is activated.
  */
-Q_INVOKABLE
 void Vehicle::playShutter () {
     soundplayer_play_sound("event_camera_shutter");
 }
@@ -135,54 +131,32 @@ void Vehicle::playShutter () {
  * Take a string from the camera qml, convert it to a QUrl and save it
  */
 void Vehicle::setVehiclePhoto(const QString fileName) {
-    qDebug() << "setVehiclePhoto : " << fileName;
     QImageReader reader;
 
     if (!fileName.isEmpty()) {
         // Convert to QImage
-        qDebug() << "Convert to QImage";
         reader.setFileName(fileName);
         QImage image = reader.read();
         QSize imageSize = image.size();
 
         // Scale to 900 x 900
-        qDebug() << "Convert to 900 x 900";
         QSize thumbSize(900,900);
         QImage scaled(image.scaled(thumbSize, Qt::KeepAspectRatio));
-        qDebug() << "Scaled Size = " << scaled.size();
 
         QDir home = QDir::home();
         home.cd("data");
         QFile file(home.absoluteFilePath("vehicle.jpg"));
         QString saveFile = file.fileName();
-        qDebug() << "open vehicle.jpg : " << saveFile;
         if (file.open(QIODevice::ReadWrite | QIODevice::Text)) {
-            qDebug() << "save to vehicle.jpg";
             scaled.save(saveFile, "JPG");
         }
-        qDebug() << "close vehicle.jpg";
         file.close();
 
-        qDebug() << "save filename";
-        vehiclePhoto = saveFile;
+        m_vehiclePhoto = saveFile;
         emit photoChanged();
-
-        // Delete from photo
     }
-
-
 }
 
-/**
- * Get Vehicle Photo URL
- */
-Q_INVOKABLE
-QString Vehicle::getVehiclePhoto() {
-    qDebug() << "getVehiclePhoto";
-    return vehiclePhoto;
-}
-
-Q_INVOKABLE
 void Vehicle::showPreview(const QString fileName) {
     bb::system::InvokeManager manager;
     bb::system::InvokeRequest request;

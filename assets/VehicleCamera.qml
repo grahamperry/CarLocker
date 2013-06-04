@@ -47,7 +47,9 @@ Sheet {
                     photoBeingTaken = false;
                     tempPhotoName = fileName;
                     preview.lastFileName = fileName;
-                    preview.visible = true;
+                    //preview.visible = true;
+                    vehicle.showPreview(fileName);
+                    
                 }
                 onPhotoSaveFailed: {
                     console.log("Photo could not be saved: Error " + error);
