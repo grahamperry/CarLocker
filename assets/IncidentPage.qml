@@ -1,5 +1,7 @@
 import bb.cascades 1.0
+import QtMobility.sensors 1.2
 import bb.cascades.maps 1.0
+import QtMobilitySubset.location 1.1
 
 Container {                
     horizontalAlignment: HorizontalAlignment.Center
@@ -23,13 +25,37 @@ Container {
             text: incident.incident
             preferredHeight: 50
             horizontalAlignment: HorizontalAlignment.Center
+            textStyle {
+                fontSize: FontSize.Medium
+                color: Color.Black
+            }
+        }
+        Container {
+            layout: StackLayout {
+                orientation: LayoutOrientation.LeftToRight
+            }
+            Label {
+                id: position
+                text: "POS:"
+                visible: false
+            }
+            Label {
+                id: latitude
+                text: incident.latitude
+                visible: false
+            }
+            Label {
+                id: longitude
+                text: incident.longitude
+                visible: false
+            }
         }
         MapView {
-            id: incidentMap
-            latitude: 43.468245
-            longitude: -80.519603
-            altitude: 100
+            id: incidentLocation
+            latitude: incident.latitude
+            longitude: incident.longitude
             visible: false
+            onCreationCompleted: setRenderEngine("RenderEngine3d")
         }                         
     }
     Container {
@@ -51,7 +77,11 @@ Container {
             
             onClicked: {
                 console.log("Record an Incident");
-                incidentMap.visible = true
+                incidentLocation.visible = true
+                position.visible = true
+                longitude.visible = true
+                latitude.visible = true
+                incidentTitle.textStyle.color = Color.Red 
                 logIncidentLocation();
             }
         }

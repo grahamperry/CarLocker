@@ -6,7 +6,6 @@ device {
         SOURCES +=  $$quote($$BASEDIR/src/CarLocker.cpp) \
                  $$quote($$BASEDIR/src/Driver.cpp) \
                  $$quote($$BASEDIR/src/Incident.cpp) \
-                 $$quote($$BASEDIR/src/IncidentMap.cpp) \
                  $$quote($$BASEDIR/src/Settings.cpp) \
                  $$quote($$BASEDIR/src/Vehicle.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
@@ -14,7 +13,6 @@ device {
         HEADERS +=  $$quote($$BASEDIR/src/CarLocker.hpp) \
                  $$quote($$BASEDIR/src/Driver.h) \
                  $$quote($$BASEDIR/src/Incident.hpp) \
-                 $$quote($$BASEDIR/src/IncidentMap.hpp) \
                  $$quote($$BASEDIR/src/Settings.hpp) \
                  $$quote($$BASEDIR/src/Vehicle.hpp)
     }
@@ -23,7 +21,6 @@ device {
         SOURCES +=  $$quote($$BASEDIR/src/CarLocker.cpp) \
                  $$quote($$BASEDIR/src/Driver.cpp) \
                  $$quote($$BASEDIR/src/Incident.cpp) \
-                 $$quote($$BASEDIR/src/IncidentMap.cpp) \
                  $$quote($$BASEDIR/src/Settings.cpp) \
                  $$quote($$BASEDIR/src/Vehicle.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
@@ -31,7 +28,6 @@ device {
         HEADERS +=  $$quote($$BASEDIR/src/CarLocker.hpp) \
                  $$quote($$BASEDIR/src/Driver.h) \
                  $$quote($$BASEDIR/src/Incident.hpp) \
-                 $$quote($$BASEDIR/src/IncidentMap.hpp) \
                  $$quote($$BASEDIR/src/Settings.hpp) \
                  $$quote($$BASEDIR/src/Vehicle.hpp)
     }
@@ -42,7 +38,6 @@ simulator {
         SOURCES +=  $$quote($$BASEDIR/src/CarLocker.cpp) \
                  $$quote($$BASEDIR/src/Driver.cpp) \
                  $$quote($$BASEDIR/src/Incident.cpp) \
-                 $$quote($$BASEDIR/src/IncidentMap.cpp) \
                  $$quote($$BASEDIR/src/Settings.cpp) \
                  $$quote($$BASEDIR/src/Vehicle.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
@@ -50,7 +45,6 @@ simulator {
         HEADERS +=  $$quote($$BASEDIR/src/CarLocker.hpp) \
                  $$quote($$BASEDIR/src/Driver.h) \
                  $$quote($$BASEDIR/src/Incident.hpp) \
-                 $$quote($$BASEDIR/src/IncidentMap.hpp) \
                  $$quote($$BASEDIR/src/Settings.hpp) \
                  $$quote($$BASEDIR/src/Vehicle.hpp)
     }

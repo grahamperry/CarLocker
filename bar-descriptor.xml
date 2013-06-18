@@ -42,7 +42,7 @@
     <buildId>1</buildId>
                  
     <!-- A string value (such as "v1", "2.5", or "Alpha 1") that represents the version of the application, as it should be shown to users. Optional. -->
-    <!-- <versionLabel></versionLabel> -->
+    <versionLabel>June 2013</versionLabel>
 
     <!-- Description, displayed in the BlackBerry Tablet OS application installer.
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
@@ -63,7 +63,7 @@
     </initialWindow>
     
     <!--  The category where the application appears. Either core.games or core.media. -->
-    <category>core.games</category>
+    <category>core.media</category>
     <configuration name="Device-Debug">
        <platformArchitecture>armle-v7</platformArchitecture>
        <asset path="arm/o.le-v7-g/CarLocker" entry="true" type="Qnx/Elf">CarLocker</asset>
