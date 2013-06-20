@@ -2,24 +2,24 @@ import bb.cascades 1.0
 import QtMobility.sensors 1.2
 import bb.cascades.maps 1.0
 import QtMobilitySubset.location 1.1
+import QtQuick 1.0 
+
 
 Container {                
     horizontalAlignment: HorizontalAlignment.Center
     verticalAlignment: VerticalAlignment.Center
     background: Color.DarkGray;
-    layout: StackLayout { }
+    layout: DockLayout { }
     leftPadding: 20
     rightPadding: 20
     topPadding: 20
     bottomPadding: 20
     preferredWidth: 1000
     preferredHeight: 1000
+
     Container {
         horizontalAlignment: HorizontalAlignment.Center
-        verticalAlignment: VerticalAlignment.Center                    
-        preferredWidth: 1000
-        preferredHeight: 500                          
-
+        verticalAlignment: VerticalAlignment.Top                    
         Label {
             id: incidentTitle
             text: incident.incident
@@ -30,144 +30,111 @@ Container {
                 color: Color.Black
             }
         }
+        Divider {}
         Container {
-            layout: StackLayout {
-                orientation: LayoutOrientation.LeftToRight
+            id: incidentLocation
+            visible: incident.mapVisible
+            Container {
+                layout: StackLayout {
+                    orientation: LayoutOrientation.LeftToRight
+                }
+    
+                Label {
+                    id: addressLabel
+                    text: "Address : "
+                }
+                Label {
+                    id: address
+                    text: incident.address
+                }
             }
-            Label {
-                id: position
-                text: "POS:"
-                visible: false
-            }
-            Label {
-                id: latitude
-                text: incident.latitude
-                visible: false
-            }
-            Label {
-                id: longitude
-                text: incident.longitude
-                visible: false
+            MapView {
+                altitude: incident.altitude //2000
+                latitude: incident.latitude
+                longitude: incident.longitude
+                preferredHeight: 650
+                preferredWidth: 720
+                //onCreationCompleted: setRenderEngine("RenderEngine3d")
             }
         }
-        MapView {
-            id: incidentLocation
-            latitude: incident.latitude
-            longitude: incident.longitude
-            visible: false
-            onCreationCompleted: setRenderEngine("RenderEngine3d")
-        }                         
     }
     Container {
         layout: StackLayout { orientation: LayoutOrientation.LeftToRight }
         horizontalAlignment: HorizontalAlignment.Fill
         verticalAlignment: VerticalAlignment.Fill
-        topPadding: 20
-        bottomPadding: 20
+        topPadding: 870
         minHeight: 50
         
         Button {
             id: incidentRecord
             horizontalAlignment: HorizontalAlignment.Fill
             verticalAlignment: VerticalAlignment.Fill
-            preferredWidth: 500
+            preferredWidth: 300
             minHeight: 100
             text: "Log"
             imageSource: "images/Create.png"
             
             onClicked: {
                 console.log("Record an Incident");
-                incidentLocation.visible = true
-                position.visible = true
-                longitude.visible = true
-                latitude.visible = true
-                incidentTitle.textStyle.color = Color.Red 
                 logIncidentLocation();
             }
         }
         Button {
+            id: zoomOut
+            horizontalAlignment: HorizontalAlignment.Fill
+            verticalAlignment: VerticalAlignment.Fill
+            preferredWidth: 100
+            minHeight: 100
+            text: "-"
+            onClicked: {
+                console.log("Zoom Out");
+                mapZoomOut();
+            }
+        }
+        Button {
+            id: zoomIn
+            horizontalAlignment: HorizontalAlignment.Fill
+            verticalAlignment: VerticalAlignment.Fill
+            preferredWidth: 100
+            minHeight: 100
+            text: "+"
+            onClicked: {
+                console.log("Zoom In");
+                mapZoomIn();
+            }
+        }
+
+        Button {
             id: incidentShare
             horizontalAlignment: HorizontalAlignment.Fill
             verticalAlignment: VerticalAlignment.Fill
-            preferredWidth: 500
+            preferredWidth: 300
             minHeight: 100
             imageSource: "images/Share.png"
 
-            text: "Share"
+            text: "Fake"
             onClicked: {
-                console.log("Share an Incident");  
+                console.log("Fake");
+                fakeIncidentLocation();
             }
         }
     }
-    Container {
-        layout: StackLayout { orientation: LayoutOrientation.LeftToRight }
-        horizontalAlignment: HorizontalAlignment.Fill
-        verticalAlignment: VerticalAlignment.Fill
-        topPadding: 20
-        bottomPadding: 20
-        minHeight: 50
+    function logIncidentLocation() {
+        console.log("logIncidentLocation");
+        incident.CreateIncidentReport()
+    }
+    function fakeIncidentLocation() {
+        console.log("fakeIncidentLocation");
+        incident.fakeIncidentReport()
+    }
+    function mapZoomIn() {
+        console.log("Zoom Map In");
+        incident.mapZoomIn()
+    }
 
-        Button {
-            id: phoneHome
-            horizontalAlignment: HorizontalAlignment.Fill
-            verticalAlignment: VerticalAlignment.Fill
-            preferredWidth: 500
-            preferredHeight: 50
-            text: "Home"
-            imageSource: "images/Phone.png"
-
-            onClicked: {
-                console.log("Phone Home, ET");
-            }
-        }
-        Button {
-            id: phoneInsurance
-            horizontalAlignment: HorizontalAlignment.Fill
-            verticalAlignment: VerticalAlignment.Fill
-            preferredWidth: 500
-            preferredHeight: 50
-            text: "Insurance"
-            imageSource: "images/Phone.png"
-            
-            onClicked: {
-                console.log("Call Insurance");
-            }
-        }
-    }  
-    Container {
-        layout: StackLayout { orientation: LayoutOrientation.LeftToRight }
-        horizontalAlignment: HorizontalAlignment.Fill
-        verticalAlignment: VerticalAlignment.Fill
-        topPadding: 20
-        bottomPadding: 20
-        minHeight: 50
-
-        Button {
-            id: incidentVideo
-            horizontalAlignment: HorizontalAlignment.Fill
-            verticalAlignment: VerticalAlignment.Fill
-            preferredWidth: 500
-            preferredHeight: 50
-            text: "Video"
-            imageSource: "images/Video.png"
-
-            onClicked: {
-                console.log("Video an Incident");
-            }
-        }
-        Button {
-            id: emergencyServices
-            horizontalAlignment: HorizontalAlignment.Fill
-            verticalAlignment: VerticalAlignment.Fill
-            preferredWidth: 500
-            preferredHeight: 50
-            text: "Emergency"
-            imageSource: "images/Phone.png"
-            
-            onClicked: {
-                console.log("Call Emergency Services");
-            }
-        }
-    }  
+    function mapZoomOut() {
+        console.log("Zoom Map Out");
+        incident.mapZoomOut()
+    }
 }
 

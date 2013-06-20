@@ -131,9 +131,5 @@ TabbedPane {
         vehicle.setEditMode(true);
         createVehicle.open();
     }
-    function logIncidentLocation() {
-        console.log("logIncidentLocation");
-        incident.CreateIncidentReport()
-    }
-    
+
 }
